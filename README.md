@@ -8,7 +8,7 @@ go get github.com/xiongpf/GoCRM
 
 #Run
 ```
-cd CoCRM/
+cd GoCRM/
 go run main.go
 ```
 

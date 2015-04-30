@@ -1,1 +1,1 @@
-/Users/Ohana/go/src/goproject/src/CoCRM/views/views/show.tpl
+/Users/Ohana/go/src/goproject/src/GoCRM/views/views/show.tpl

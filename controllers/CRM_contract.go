@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"CoCRM/models"
+	"GoCRM/models"
 	"encoding/json"
 	"errors"
 	"strconv"

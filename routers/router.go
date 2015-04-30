@@ -8,7 +8,7 @@
 package routers
 
 import (
-	"CoCRM/controllers"
+	"GoCRM/controllers"
 
 	"github.com/astaxie/beego"
 )

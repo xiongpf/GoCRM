@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "CoCRM/routers"
+	_ "GoCRM/routers"
 	"github.com/astaxie/beego"
     "github.com/astaxie/beego/orm"
     _ "github.com/go-sql-driver/mysql"
