@@ -9,8 +9,8 @@ import (
 
 	"github.com/astaxie/beego"
 
-    "time"
-    "fmt"
+	"fmt"
+	"time"
 )
 
 // oprations for CRMContact
@@ -26,8 +26,8 @@ func (c *CRMContactController) URLMapping() {
 	c.Mapping("Delete", c.Delete)
 }
 
-func (c *CRMContactController) ShowAddPage(){
-    c.TplNames = "contact/add.html"
+func (c *CRMContactController) ShowAddPage() {
+	c.TplNames = "contact/add.html"
 }
 
 // @Title Post
@@ -37,19 +37,19 @@ func (c *CRMContactController) ShowAddPage(){
 // @Failure 403 body is empty
 // @router / [post]
 func (c *CRMContactController) Post() {
-    ct := new(models.CRMContact)
-    ct.CAdd = c.GetString("CAdd")
-    ct.CName = c.GetString("CName")
-    ct.CBirthday = c.GetString("CBirthday")
-    ct.CCreateDate = time.Now()
-    ct.CDepartment = c.GetString("CDepartment")
-    ct.CEmail = c.GetString("CEmail")
-    ct.CFax = c.GetString("CFax")
-    ct.CHobby = c.GetString("CHobby")
-    ct.CMob = c.GetString("CMob")
-    ct.CQQ = c.GetString("CQQ")
-    ct.CSex = c.GetString("CSex")
-    ct.CTel = c.GetString("CTel")
+	ct := new(models.CRMContact)
+	ct.CAdd = c.GetString("CAdd")
+	ct.CName = c.GetString("CName")
+	ct.CBirthday = c.GetString("CBirthday")
+	ct.CCreateDate = time.Now()
+	ct.CDepartment = c.GetString("CDepartment")
+	ct.CEmail = c.GetString("CEmail")
+	ct.CFax = c.GetString("CFax")
+	ct.CHobby = c.GetString("CHobby")
+	ct.CMob = c.GetString("CMob")
+	ct.CQQ = c.GetString("CQQ")
+	ct.CSex = c.GetString("CSex")
+	ct.CTel = c.GetString("CTel")
 
 	if id, err := models.AddCRMContact(ct); err == nil {
 		c.Data["json"] = map[string]int64{"id": id}
@@ -57,7 +57,7 @@ func (c *CRMContactController) Post() {
 		c.Data["json"] = err.Error()
 	}
 	c.ServeJson()
-    //c.Redirect("/crm/contact/getall",200)
+	//c.Redirect("/crm/contact/getall",200)
 }
 
 // @Title Get
@@ -104,7 +104,7 @@ func (c *CRMContactController) GetAll() {
 	// limit: 10 (default is 10)
 	if v, err := c.GetInt64("numPerPage"); err == nil {
 		limit = v
-        fmt.Println(limit)
+		fmt.Println(limit)
 	}
 	// offset: 0 (default is 0)
 	if v, err := c.GetInt64("offset"); err == nil {
@@ -139,8 +139,8 @@ func (c *CRMContactController) GetAll() {
 		c.Data["json"] = l
 	}
 	//c.ServeJson()
-    c.Data["totalCount"] = len(l)
-    c.TplNames = "contact/index.html"
+	c.Data["totalCount"] = len(l)
+	c.TplNames = "contact/index.html"
 }
 
 // @Title Update
@@ -177,5 +177,6 @@ func (c *CRMContactController) Delete() {
 	} else {
 		c.Data["json"] = err.Error()
 	}
-	c.ServeJson()
+
+    c.ServeJson()
 }

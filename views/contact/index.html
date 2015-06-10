@@ -59,14 +59,14 @@
 <div class="pageContent">
     <div class="panelBar">
         <ul class="toolBar">
-            <li><a class="add" href="/crm/contact/showAddpage" target="navTab"><span>添加联系人</span></a></li>
-            <li><a class="delete" href="/crm/contact?:id={{.Id}}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
-            <li><a class="edit" href="demo_page4.html?uid={sid_user}" target="navTab"><span>修改</span></a></li>
+            <li><a class="add" href="/crm/contact/showAddpage" target="dialog" rel=""><span>添加联系人</span></a></li>
+            <li><a class="delete" href="/crm/contact/delete/{sid_user}" target="ajaxTodo" title="确定要删除吗?" callback="Refser()" rel="contactTabId"><span>删除</span></a></li>
+            <li><a class="edit" href="/crm/contact/getone/{sid_user}" target="navTab"><span>修改</span></a></li>
             <li class="line">line</li>
             <li><a class="icon" href="demo/common/dwz-team.xls" target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span></a></li>
         </ul>
     </div>
-    <table class="table" width="100%" layoutH="138">
+    <table class="table" width="100%" layoutH="138" id="contactTabId">
         <thead>
         <tr>
             <th width="120">客户编号</th>
@@ -114,3 +114,13 @@
 
     </div>
 </div>
+<script>
+    function Refser(){
+        //location.reload();
+        //window.location.href="/crm/contact/getall"
+        //opener.location.reload();
+        //window.location.reload();
+        //$("#contactTabId").loadUrl("/crm/contact/getall",null,null );
+        //navTabPageBreak(this);
+    }
+</script>

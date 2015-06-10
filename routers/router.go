@@ -23,7 +23,8 @@ func init() {
 			beego.NSRouter("/getall", &controllers.CRMContactController{}, "get:GetAll"),
 			beego.NSRouter("/showAddpage", &controllers.CRMContactController{}, "get:ShowAddPage"),
 			beego.NSRouter("/addAction", &controllers.CRMContactController{}, "post:Post"),
-			beego.NSRouter("/delete", &controllers.CRMContactController{}, "post:Delete"),
+			beego.NSRouter("/delete/:id", &controllers.CRMContactController{}, "post:Delete"),
+            beego.NSRouter("/getone/:id", &controllers.CRMContactController{}, "post:GetOne"),
 		),
 
 		beego.NSNamespace("/CRM_Customer",

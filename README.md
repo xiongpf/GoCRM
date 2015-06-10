@@ -1,25 +1,35 @@
 # GoCRM
-Use golang development of CRM system
+使用golang开发CRM  
+前台DWZ 后端beego  
 
-#Installation
+#安装
 
 go get github.com/xiongpf/GoCRM  
 
+#依赖包  
+请执行以下命令:  
 
-#Run
+go get github.com/astaxie/beego  
+
+go get github.com/go-sql-driver/mysql  
+
+#数据库文件
+在GoCRM/doc/go_crm.sql
+
+#运行
 ```
-cd GoCRM/
+cd GoCRM/  
+
 go run main.go
 ```
 
-##admin index##
+##查看效果##
 http://127.0.0.1:8025/crm/index
 
 #Features
 
+#联系方式
+QQ群:87752496
 
 #LICENSE
 GNU GENERAL PUBLIC LICENSE
-
-#contact
-QQ群:87752496
