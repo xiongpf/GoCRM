@@ -11,6 +11,7 @@ import (
 
 	"fmt"
 	"time"
+    "GoCRM/comm"
 )
 
 // oprations for CRMContact
@@ -173,7 +174,11 @@ func (c *CRMContactController) Delete() {
 	idStr := c.Ctx.Input.Params[":id"]
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteCRMContact(id); err == nil {
-		c.Data["json"] = "OK"
+        resp := new(comm.DwzResp)
+        resp.StatusCode = "200"
+        resp.Rel = "contactTabId"
+        resp.CallBackType = "closeCurrent"
+		c.Data["json"] = comm.JsonMarshal(resp)
 	} else {
 		c.Data["json"] = err.Error()
 	}
