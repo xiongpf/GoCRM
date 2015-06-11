@@ -13,15 +13,15 @@
                     </p>
                     <p>
                         <label>部门名称：</label>
-                        <input name="CDepartment" type="text" size="30" value="{{.CDepartment}}" alt=""/>
+                        <input name="CDepartment" type="text" size="30" value="{{.json.CDepartment}}" alt=""/>
                     </p>
                     <p>
                         <label>生日：</label>
-                        <input type="text" name="CBirthday" class="date" size="30" /><a class="inputDateButton" href="javascript:;">选择</a>
+                        <input type="text" name="CBirthday" class="date" size="30" value="{{.json.CBirthday}}"/><a class="inputDateButton" href="javascript:;">选择</a>
                     </p>
                     <p>
                         <label>职务：</label>
-                        <input type="text" size="30" name="CPosition" value="{{.CPosition}}"/>
+                        <input type="text" size="30" name="CPosition" value="{{.json.CPosition}}"/>
                     </p>
             </fieldset>
 
@@ -29,27 +29,27 @@
                     <legend>联系方式</legend>
                 <p>
                     <label>手机：</label>
-                    <input type="text" name="CMob" size="30" class="phone" value="{{.CMob}}"/>
+                    <input type="text" name="CMob" size="30" class="phone" value="{{.json.CMob}}"/>
                 </p>
                 <p>
                     <label>固定电话：</label>
-                    <input type="text" name="CTel" size="30" value="{{.CTel}}"/>
+                    <input type="text" name="CTel" size="30" value="{{.json.CTel}}"/>
                 </p>
                 <p>
                     <label>传真：</label>
-                    <input type="text" size="30" name="CFax" value="{{.CFax}}"/>
+                    <input type="text" size="30" name="CFax" value="{{.json.CFax}}"/>
                 </p>
                 <p>
                     <label>邮箱：</label>
-                    <input type="text" size="30" name="CEmail" class="email" value="{{.CEmail}}"/>
+                    <input type="text" size="30" name="CEmail" class="email" value="{{.json.CEmail}}"/>
                 </p>
                 <p>
                     <label>QQ：</label>
-                    <input type="text" size="30" name="CQQ" class="digits" value="{{.CQQ}}"/>
+                    <input type="text" size="30" name="CQQ" class="digits" value="{{.json.CQQ}}"/>
                 </p>
                 <p>
                     <label>地址：</label>
-                    <input type="text" size="30" name="CAdd" value="{{.CAdd}}"/>
+                    <input type="text" size="30" name="CAdd" value="{{.json.CAdd}}"/>
                 </p>
             </fieldset>
 
@@ -57,11 +57,11 @@
                 <legend>其他信息</legend>
                 <dl class="nowrap">
                     <dt>爱好：</dt>
-                    <dd><textarea name="CHobby" cols="80" rows="2" value="{{.CHobby}}"></textarea></dd>
+                    <dd><textarea name="CHobby" cols="80" rows="2" value="{{.json.CHobby}}"></textarea></dd>
                 </dl>
                 <dl class="nowrap">
                     <dt>备注：</dt>
-                    <dd><textarea name="CRemarks" cols="80" rows="2" value="{{.CRemarks}}"></textarea></dd>
+                    <dd><textarea name="CRemarks" cols="80" rows="2" value="{{.json.CRemarks}}"></textarea></dd>
                 </dl>
             </fieldset>
         </div>

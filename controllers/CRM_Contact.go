@@ -49,6 +49,8 @@ func (c *CRMContactController) Post() {
 	ct.CQQ = c.GetString("CQQ")
 	ct.CSex = c.GetString("CSex")
 	ct.CTel = c.GetString("CTel")
+    ct.CHobby = c.GetString("CHobby")
+    ct.CRemarks = c.GetString("CRemarks")
 
 	if id, err := models.AddCRMContact(ct); err == nil {
 		c.Data["json"] = map[string]int64{"id": id}
