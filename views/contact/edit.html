@@ -1,0 +1,106 @@
+<div class="pageContent">
+    <form id="addContactFrom" method="post" action="/crm/contact/addAction" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogRefresh);">
+        <div class="pageFormContent" layoutH="56">
+            <fieldset>
+                <legend>基本信息</legend>
+                    <p>
+                        <label>公司名称：</label>
+                        <input type="text" size="30" value=""/>
+                    </p>
+                    <p>
+                        <label>客户名称：</label>
+                        <input id="CName" name="CName" class="required" type="text" size="30" value="{{.json.CName}}" alt=""/>
+                    </p>
+                    <p>
+                        <label>部门名称：</label>
+                        <input name="CDepartment" type="text" size="30" value="{{.CDepartment}}" alt=""/>
+                    </p>
+                    <p>
+                        <label>生日：</label>
+                        <input type="text" name="CBirthday" class="date" size="30" /><a class="inputDateButton" href="javascript:;">选择</a>
+                    </p>
+                    <p>
+                        <label>职务：</label>
+                        <input type="text" size="30" name="CPosition" value="{{.CPosition}}"/>
+                    </p>
+            </fieldset>
+
+            <fieldset>
+                    <legend>联系方式</legend>
+                <p>
+                    <label>手机：</label>
+                    <input type="text" name="CMob" size="30" class="phone" value="{{.CMob}}"/>
+                </p>
+                <p>
+                    <label>固定电话：</label>
+                    <input type="text" name="CTel" size="30" value="{{.CTel}}"/>
+                </p>
+                <p>
+                    <label>传真：</label>
+                    <input type="text" size="30" name="CFax" value="{{.CFax}}"/>
+                </p>
+                <p>
+                    <label>邮箱：</label>
+                    <input type="text" size="30" name="CEmail" class="email" value="{{.CEmail}}"/>
+                </p>
+                <p>
+                    <label>QQ：</label>
+                    <input type="text" size="30" name="CQQ" class="digits" value="{{.CQQ}}"/>
+                </p>
+                <p>
+                    <label>地址：</label>
+                    <input type="text" size="30" name="CAdd" value="{{.CAdd}}"/>
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>其他信息</legend>
+                <dl class="nowrap">
+                    <dt>爱好：</dt>
+                    <dd><textarea name="CHobby" cols="80" rows="2" value="{{.CHobby}}"></textarea></dd>
+                </dl>
+                <dl class="nowrap">
+                    <dt>备注：</dt>
+                    <dd><textarea name="CRemarks" cols="80" rows="2" value="{{.CRemarks}}"></textarea></dd>
+                </dl>
+            </fieldset>
+        </div>
+        <div class="formBar">
+            <ul>
+                <!--<li><a class="buttonActive" href="javascript:;"><span>保存</span></a></li>-->
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+                <li>
+                    <div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>
+<script>
+//    function navTabAjaxDone(josn){
+//        alert(json);
+//        DWZ.ajaxDone(json);
+//        if (json.statusCode == DWZ.statusCode.ok) {
+//            if (json.navTabId) {
+//                navTab.reloadFlag(json.navTabId);
+//            } else {
+//                navTabPageBreak();
+//            }
+//
+//            if ("closeCurrent" == json.callbackType ) {
+//                setTimeout(function(){navTab.closeCurrentTab();},100);
+//            } else if ("forward" == json.callbackType) {
+//                navTab.reload(josn.forwardUrl);
+//            }
+//        }
+//    }
+function dialogRefresh(json){
+    DWZ.ajaxDone(json);
+    alert(eval(json));
+    if (json.statusCode == DWZ.statusCode.ok){
+        dialogPageBreak({},json.rel);
+    }else if("closeCurrent" == json.callbackType){
+        $.pdialog.closeCurrent();
+    }
+}
+</script>

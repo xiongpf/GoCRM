@@ -3,8 +3,8 @@
 前台DWZ 后端beego  
 
 #安装
-
-go get github.com/xiongpf/GoCRM  
+在gopath下
+git clone https://github.com/xiongpf/GoCRM.git
 
 #依赖包  
 请执行以下命令:  

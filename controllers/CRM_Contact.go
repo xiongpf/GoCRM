@@ -8,10 +8,8 @@ import (
 	"strings"
 
 	"github.com/astaxie/beego"
-
 	"fmt"
 	"time"
-    "GoCRM/comm"
 )
 
 // oprations for CRMContact
@@ -76,7 +74,8 @@ func (c *CRMContactController) GetOne() {
 	} else {
 		c.Data["json"] = v
 	}
-	c.ServeJson()
+	c.TplNames = "contact/edit.html"
+    c.Render()
 }
 
 // @Title Get All
@@ -174,14 +173,10 @@ func (c *CRMContactController) Delete() {
 	idStr := c.Ctx.Input.Params[":id"]
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteCRMContact(id); err == nil {
-        resp := new(comm.DwzResp)
-        resp.StatusCode = "200"
-        resp.Rel = "contactTabId"
-        resp.CallBackType = "closeCurrent"
-		c.Data["json"] = comm.JsonMarshal(resp)
+		c.Data["json"] = map[string]string{"statusCode": "200", "message": "删除成功", "navTabId": "", "rel": "", "callbackType": "", "forwardUrl": "", "confirmMsg": ""}
 	} else {
 		c.Data["json"] = err.Error()
 	}
 
-    c.ServeJson()
+	c.ServeJson()
 }

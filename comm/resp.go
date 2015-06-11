@@ -13,4 +13,5 @@ type DwzResp struct {
 	Rel          string `json:"rel"`
 	CallBackType string `json:"callbackType"`
 	ForwardUrl   string `json:"forwardUrl"`
+	ConfirmMsg   string `json:"confirmMsg"`
 }
