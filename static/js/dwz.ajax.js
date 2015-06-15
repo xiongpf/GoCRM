@@ -16,7 +16,7 @@ function validateCallback(form, callback, confirmMsg) {
 		return false;
 	}
 
-	var _submitFn = function(){
+    var _submitFn = function(){
 		$.ajax({
 			type: form.method || 'POST',
 			url:$form.attr("action"),

@@ -25,6 +25,7 @@ func init() {
 			beego.NSRouter("/addAction", &controllers.CRMContactController{}, "*:Post"),
 			beego.NSRouter("/delete/:id", &controllers.CRMContactController{}, "*:Delete"),
 			beego.NSRouter("/getone/:id", &controllers.CRMContactController{}, "*:GetOne"),
+            beego.NSRouter("/update/:id",&controllers.CRMContactController{},"*:Put"),
 		),
 
 		beego.NSNamespace("/CRM_Customer",

@@ -1,5 +1,5 @@
 <div class="pageContent">
-    <form id="addContactFrom" method="post" action="/crm/contact/addAction" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogRefresh);">
+    <form id="editContactFrom" method="post" action="/crm/contact/update/{{.json.Id}}" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
         <div class="pageFormContent" layoutH="56">
             <fieldset>
                 <legend>基本信息</legend>
@@ -76,31 +76,3 @@
         </div>
     </form>
 </div>
-<script>
-//    function navTabAjaxDone(josn){
-//        alert(json);
-//        DWZ.ajaxDone(json);
-//        if (json.statusCode == DWZ.statusCode.ok) {
-//            if (json.navTabId) {
-//                navTab.reloadFlag(json.navTabId);
-//            } else {
-//                navTabPageBreak();
-//            }
-//
-//            if ("closeCurrent" == json.callbackType ) {
-//                setTimeout(function(){navTab.closeCurrentTab();},100);
-//            } else if ("forward" == json.callbackType) {
-//                navTab.reload(josn.forwardUrl);
-//            }
-//        }
-//    }
-function dialogRefresh(json){
-    DWZ.ajaxDone(json);
-    alert(eval(json));
-    if (json.statusCode == DWZ.statusCode.ok){
-        dialogPageBreak({},json.rel);
-    }else if("closeCurrent" == json.callbackType){
-        $.pdialog.closeCurrent();
-    }
-}
-</script>

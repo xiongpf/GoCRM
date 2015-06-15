@@ -6,12 +6,14 @@ package comm
 "rel":"", "callbackType":"closeCurrent", "forwardUrl":""
 */
 
-type DwzResp struct {
-	StatusCode   string `json:"statusCode"`
-	Message      string `json:"message"`
-	NavTabId     string `json:"navTabId"`
-	Rel          string `json:"rel"`
-	CallBackType string `json:"callbackType"`
-	ForwardUrl   string `json:"forwardUrl"`
-	ConfirmMsg   string `json:"confirmMsg"`
+
+//删除后刷新
+func RespJson_Delete() map[string]string {
+	return map[string]string{"statusCode": "200", "message": "删除成功", "navTabId": "", "rel": "", "callbackType": "", "forwardUrl": "", "confirmMsg": ""}
+}
+
+// 适用于 add update 表单
+//关闭Dialog或NavTab并且刷新
+func RespJsonRefresh_Close(navTableId string) map[string]string {
+	return map[string]string{"statusCode": "200", "message": "操作成功", "navTabId": navTableId, "rel": "", "callbackType": "closeCurrent", "forwardUrl": "", "confirmMsg": ""}
 }

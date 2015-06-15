@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"GoCRM/models"
-	"encoding/json"
 	"errors"
 	"strconv"
 	"strings"
@@ -10,6 +9,7 @@ import (
 	"github.com/astaxie/beego"
 	"fmt"
 	"time"
+    "GoCRM/comm"
 )
 
 // oprations for CRMContact
@@ -42,6 +42,7 @@ func (c *CRMContactController) Post() {
 	ct.CBirthday = c.GetString("CBirthday")
 	ct.CCreateDate = time.Now()
 	ct.CDepartment = c.GetString("CDepartment")
+    ct.CPosition = c.GetString("CPosition")
 	ct.CEmail = c.GetString("CEmail")
 	ct.CFax = c.GetString("CFax")
 	ct.CHobby = c.GetString("CHobby")
@@ -52,8 +53,8 @@ func (c *CRMContactController) Post() {
     ct.CHobby = c.GetString("CHobby")
     ct.CRemarks = c.GetString("CRemarks")
 
-	if id, err := models.AddCRMContact(ct); err == nil {
-		c.Data["json"] = map[string]int64{"id": id}
+	if _, err := models.AddCRMContact(ct); err == nil {
+		c.Data["json"] = comm.RespJsonRefresh_Close("contactPage")
 	} else {
 		c.Data["json"] = err.Error()
 	}
@@ -77,7 +78,6 @@ func (c *CRMContactController) GetOne() {
 		c.Data["json"] = v
 	}
 	c.TplNames = "contact/edit.html"
-    c.Render()
 }
 
 // @Title Get All
@@ -155,10 +155,26 @@ func (c *CRMContactController) GetAll() {
 func (c *CRMContactController) Put() {
 	idStr := c.Ctx.Input.Params[":id"]
 	id, _ := strconv.Atoi(idStr)
-	v := models.CRMContact{Id: id}
-	json.Unmarshal(c.Ctx.Input.RequestBody, &v)
-	if err := models.UpdateCRMContactById(&v); err == nil {
-		c.Data["json"] = "OK"
+	ct := models.CRMContact{Id: id}
+
+    ct.CAdd = c.GetString("CAdd")
+    ct.CName = c.GetString("CName")
+    ct.CBirthday = c.GetString("CBirthday")
+    ct.CCreateDate = time.Now()
+    ct.CDepartment = c.GetString("CDepartment")
+    ct.CPosition = c.GetString("CPosition")
+    ct.CEmail = c.GetString("CEmail")
+    ct.CFax = c.GetString("CFax")
+    ct.CHobby = c.GetString("CHobby")
+    ct.CMob = c.GetString("CMob")
+    ct.CQQ = c.GetString("CQQ")
+    ct.CSex = c.GetString("CSex")
+    ct.CTel = c.GetString("CTel")
+    ct.CHobby = c.GetString("CHobby")
+    ct.CRemarks = c.GetString("CRemarks")
+
+	if err := models.UpdateCRMContactById(&ct); err == nil {
+		c.Data["json"] = comm.RespJsonRefresh_Close("contactPage")
 	} else {
 		c.Data["json"] = err.Error()
 	}
@@ -175,7 +191,7 @@ func (c *CRMContactController) Delete() {
 	idStr := c.Ctx.Input.Params[":id"]
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteCRMContact(id); err == nil {
-		c.Data["json"] = map[string]string{"statusCode": "200", "message": "删除成功", "navTabId": "", "rel": "", "callbackType": "", "forwardUrl": "", "confirmMsg": ""}
+		c.Data["json"] = comm.RespJson_Delete()
 	} else {
 		c.Data["json"] = err.Error()
 	}
